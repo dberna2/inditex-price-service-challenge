@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface PriceRepository {
 
-  List<Price> searchByCriteria(Brand brand, Product product, LocalDateTime applicationDate);
+  List<Price> searchPricesByCriteria(Brand brand, Product product, LocalDateTime applicationDate);
 }

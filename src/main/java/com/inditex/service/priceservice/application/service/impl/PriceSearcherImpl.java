@@ -21,18 +21,19 @@ public class PriceSearcherImpl implements PriceSearcher {
   private final PriceRepository repository;
 
   @Override
-  public Optional<PriceResponse> byCriteria(
+  public Optional<PriceResponse> getPricesByCriteria(
       Long brandId, Long productId, LocalDateTime applicationDate) {
 
     Product product = Product.fromValue(productId);
     Brand brand = Brand.fromValue(brandId);
 
-    return repository.searchByCriteria(brand, product, applicationDate).stream()
+    return repository.searchPricesByCriteria(brand, product, applicationDate).stream()
         .max(Comparator.comparing(Price::getPriority))
         .map(this::toPriceResponse);
   }
 
   private PriceResponse toPriceResponse(Price price) {
+    log.info("Price retrieved is: {}", price);
     return PriceResponse.builder()
         .productId(price.getProduct().getValue())
         .brandId(price.getBrand().getValue())

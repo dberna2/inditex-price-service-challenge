@@ -21,7 +21,8 @@ public class InMemoryPriceRepositoryImpl implements PriceRepository {
   private final PriceH2Repository repository;
 
   @Override
-  public List<Price> searchByCriteria(Brand brand, Product product, LocalDateTime applicationDate) {
+  public List<Price> searchPricesByCriteria(
+      Brand brand, Product product, LocalDateTime applicationDate) {
 
     Long productIdentifier = product.getValue();
     Long brandIdentifier = brand.getValue();

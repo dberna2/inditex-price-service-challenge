@@ -42,7 +42,7 @@ class InMemoryPriceRepositoryImplTest {
     LocalDateTime applicationDate = LocalDateTime.now();
 
     List<Price> result =
-        inMemoryPriceRepositoryImpl.searchByCriteria(brand, product, applicationDate);
+        inMemoryPriceRepositoryImpl.searchPricesByCriteria(brand, product, applicationDate);
 
     verify(h2Repository, times(1))
         .findByBrandAndProductInRange(brand.getValue(), product.getValue(), applicationDate);
@@ -61,7 +61,7 @@ class InMemoryPriceRepositoryImplTest {
     LocalDateTime applicationDate = LocalDateTime.now().plusMonths(3);
 
     List<Price> result =
-        inMemoryPriceRepositoryImpl.searchByCriteria(brand, product, applicationDate);
+        inMemoryPriceRepositoryImpl.searchPricesByCriteria(brand, product, applicationDate);
 
     verify(h2Repository, times(1))
         .findByBrandAndProductInRange(brand.getValue(), product.getValue(), applicationDate);

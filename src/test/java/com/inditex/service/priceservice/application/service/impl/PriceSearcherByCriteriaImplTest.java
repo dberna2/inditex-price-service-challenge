@@ -33,7 +33,7 @@ class PriceSearcherByCriteriaImplTest {
     Price price = PriceMother.create();
     List<Price> prices = List.of(price);
 
-    when(repository.searchByCriteria(
+    when(repository.searchPricesByCriteria(
             any(Brand.class), any(Product.class), any(LocalDateTime.class)))
         .thenReturn(prices);
 
@@ -41,7 +41,8 @@ class PriceSearcherByCriteriaImplTest {
     long productId = ProductMother.defaultProductId();
     LocalDateTime applicationDate = LocalDateTime.now();
 
-    Optional<PriceResponse> result = priceSearcher.byCriteria(brandId, productId, applicationDate);
+    Optional<PriceResponse> result =
+        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isPresent();
     assertThat(result.get().getPrice()).isEqualTo(price.getPrice());
@@ -55,7 +56,7 @@ class PriceSearcherByCriteriaImplTest {
 
     List<Price> prices = Collections.emptyList();
 
-    when(repository.searchByCriteria(
+    when(repository.searchPricesByCriteria(
             any(Brand.class), any(Product.class), any(LocalDateTime.class)))
         .thenReturn(prices);
 
@@ -63,7 +64,8 @@ class PriceSearcherByCriteriaImplTest {
     long productId = ProductMother.defaultProductId();
     LocalDateTime applicationDate = LocalDateTime.now();
 
-    Optional<PriceResponse> result = priceSearcher.byCriteria(brandId, productId, applicationDate);
+    Optional<PriceResponse> result =
+        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isNotPresent();
   }
@@ -73,7 +75,7 @@ class PriceSearcherByCriteriaImplTest {
 
     List<Price> prices = Collections.emptyList();
 
-    when(repository.searchByCriteria(
+    when(repository.searchPricesByCriteria(
             any(Brand.class), any(Product.class), any(LocalDateTime.class)))
         .thenReturn(prices);
 
@@ -81,7 +83,8 @@ class PriceSearcherByCriteriaImplTest {
     long productId = ProductMother.defaultProductId();
     LocalDateTime applicationDate = LocalDateTime.now();
 
-    Optional<PriceResponse> result = priceSearcher.byCriteria(brandId, productId, applicationDate);
+    Optional<PriceResponse> result =
+        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isNotPresent();
   }
@@ -91,7 +94,7 @@ class PriceSearcherByCriteriaImplTest {
 
     List<Price> prices = Collections.emptyList();
 
-    when(repository.searchByCriteria(
+    when(repository.searchPricesByCriteria(
             any(Brand.class), any(Product.class), any(LocalDateTime.class)))
         .thenReturn(prices);
 
@@ -99,7 +102,8 @@ class PriceSearcherByCriteriaImplTest {
     long productId = ProductMother.defaultProductId();
     LocalDateTime applicationDate = LocalDateTime.now().plusMonths(2);
 
-    Optional<PriceResponse> result = priceSearcher.byCriteria(brandId, productId, applicationDate);
+    Optional<PriceResponse> result =
+        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isNotPresent();
   }

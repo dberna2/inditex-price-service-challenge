@@ -21,7 +21,7 @@ public class PriceSearcherImpl implements PriceSearcher {
   private final PriceRepository repository;
 
   @Override
-  public Optional<PriceResponse> getPricesByCriteria(
+  public Optional<PriceResponse> getPriceByCriteria(
       Long brandId, Long productId, LocalDateTime applicationDate) {
 
     Product product = Product.fromValue(productId);

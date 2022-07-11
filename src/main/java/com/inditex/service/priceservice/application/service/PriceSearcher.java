@@ -6,6 +6,6 @@ import java.util.Optional;
 
 public interface PriceSearcher {
 
-  Optional<PriceResponse> getPricesByCriteria(
+  Optional<PriceResponse> getPriceByCriteria(
       Long brandId, Long productId, LocalDateTime applicationDate);
 }

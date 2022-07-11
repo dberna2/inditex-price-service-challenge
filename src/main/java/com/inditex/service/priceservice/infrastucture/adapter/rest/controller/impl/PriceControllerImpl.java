@@ -22,10 +22,10 @@ public class PriceControllerImpl implements PriceController {
   public ResponseEntity<PriceResponse> findPrice(
       Long brandId, Long productId, LocalDateTime applicationDate) {
 
-    log.info("Calling to getPricesByCriteria {} {} {} ", brandId, productId, applicationDate);
+    log.info("Calling to getPriceByCriteria {} {} {} ", brandId, productId, applicationDate);
 
     return priceSearcher
-        .getPricesByCriteria(brandId, productId, applicationDate)
+        .getPriceByCriteria(brandId, productId, applicationDate)
         .map(ResponseEntity::ok)
         .orElseGet(() -> ResponseEntity.noContent().build());
   }

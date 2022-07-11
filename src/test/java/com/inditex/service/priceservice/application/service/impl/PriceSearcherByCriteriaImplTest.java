@@ -42,7 +42,7 @@ class PriceSearcherByCriteriaImplTest {
     LocalDateTime applicationDate = LocalDateTime.now();
 
     Optional<PriceResponse> result =
-        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
+        priceSearcher.getPriceByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isPresent();
     assertThat(result.get().getPrice()).isEqualTo(price.getPrice());
@@ -65,7 +65,7 @@ class PriceSearcherByCriteriaImplTest {
     LocalDateTime applicationDate = LocalDateTime.now();
 
     Optional<PriceResponse> result =
-        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
+        priceSearcher.getPriceByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isNotPresent();
   }
@@ -84,7 +84,7 @@ class PriceSearcherByCriteriaImplTest {
     LocalDateTime applicationDate = LocalDateTime.now();
 
     Optional<PriceResponse> result =
-        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
+        priceSearcher.getPriceByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isNotPresent();
   }
@@ -103,7 +103,7 @@ class PriceSearcherByCriteriaImplTest {
     LocalDateTime applicationDate = LocalDateTime.now().plusMonths(2);
 
     Optional<PriceResponse> result =
-        priceSearcher.getPricesByCriteria(brandId, productId, applicationDate);
+        priceSearcher.getPriceByCriteria(brandId, productId, applicationDate);
 
     assertThat(result).isNotPresent();
   }
